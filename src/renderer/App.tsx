@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable no-console */
 /* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -11,6 +12,7 @@ import AudioControls2 from './components/AudioControls2';
 import MicControls from './components/MicControls';
 import StillPicture from './components/StillPicture';
 import TakeVideo2 from './components/TakeVideo2';
+import UncoverGame from './components/UncoverGame';
 
 // const navigate = useNavigate();
 
@@ -22,7 +24,12 @@ const uploadImage = async (file: string | Blob) => {
 
 const exitApplication = () => {
   console.log('exiting');
-  window.electron.ipcRenderer.sendMessage('close_application', ['close_application'])
+  window.electron.ipcRenderer.sendMessage('close_application', ['close_application']);
+}
+
+const switchGame = () => {
+  console.log('switching to game');
+  window.electron.ipcRenderer.sendMessage('swith_to_game', ['swith_to_game']);
 }
 
 // const { status, startRecording, stopRecording, mediaBlobUrl } =
@@ -44,7 +51,7 @@ const Hello = () => {
       >
         using web API's
       </h3>
-      <div>
+      <div style={{marginBottom: '72px'}}>
         <Link
           to="/picture"
           style={{
@@ -127,6 +134,44 @@ const Hello = () => {
           MICROPHONE OUTPUT
         </Link>
       </div>
+
+      <h2 style={{ color: '#009900', fontFamily: 'cursive', fontSize: '42px'}}>
+        GAME POC's
+      </h2>
+      <h3
+        style={{
+          color: '#009900',
+          fontFamily: 'cursive',
+          fontSize: '32px',
+          marginTop: '-24px',
+        }}
+      >
+        using PhaserJS
+      </h3>
+      <div style={{marginBottom: '72px'}}>
+        <Link
+        to="/uncover-game"
+        onClick={switchGame}
+          style={{
+            fontWeight: 'bold',
+            fontFamily: 'cursive',
+            fontSize: '20px',
+            backgroundColor: '#e60000',
+            color: 'white',
+            height: '48px',
+            outline: 'none',
+            border: 'none',
+            borderRadius: '24px',
+            padding: '10px 20px',
+            cursor: 'pointer',
+            marginRight: '15px',
+            textDecoration: 'none'
+          }}
+        >
+          UNCOVER
+        </Link>
+      </div>
+
       {/* <div>
         {process.env.REACT_APP_ENV_TYPE}
         {process.env.REACT_APP_API_END_POINT}
@@ -175,6 +220,7 @@ export default function App() {
           element={<StillPicture sendFile={uploadImage} />}
         />
         <Route path="/video" element={<TakeVideo2 />} />
+        <Route path="/uncover-game" element={<UncoverGame />} />
         <Route
           path="/audio"
           element={

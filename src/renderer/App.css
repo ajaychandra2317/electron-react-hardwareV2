@@ -3,6 +3,14 @@
   margin-top: 32px;
 }
 
+body{
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0%;
+}
+
 .homeButton{
   font-size: 24px;
   color: #009900;

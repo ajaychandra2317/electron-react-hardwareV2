@@ -80,10 +80,11 @@ const createWindow = async () => {
       preload: app.isPackaged
         ? path.join(__dirname, 'preload.js')
         : path.join(__dirname, '../../.erb/dll/preload.js'),
+      // devTools: false,
     },
-    frame: false,
+    frame: true,
     title: 'Hardware POCs V2',
-    fullscreen: true,
+    fullscreen: false,
   });
 
   mainWindow.maximize();
@@ -135,6 +136,14 @@ ipcMain.on('close_application', (event, arg) => {
   console.log(arg);
   if (arg[0] === 'close_application') {
     mainWindow?.close();
+  }
+});
+
+ipcMain.on('swith_to_game', (event, arg) => {
+  console.log(arg);
+  if (arg[0] === 'swith_to_game') {
+    // to be implemented
+    mainWindow?.loadURL('');
   }
 });
 

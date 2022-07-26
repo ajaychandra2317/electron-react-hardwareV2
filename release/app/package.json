@@ -1,11 +1,11 @@
 {
-  "name": "HardwarePOCsV2ElectronReact",
-  "version": "4.6.0",
-  "description": "Picture Audio Mic",
+  "name": "HardwareUncoverGameV2",
+  "version": "4.7.0",
+  "description": "Picture Audio Mic Uncover Game",
   "license": "MIT",
   "author": {
-    "name": "Hatch",
-    "email": "hatch@hatch.com",
+    "name": "Hatch Tricon Both",
+    "email": "hatch@tricon.com",
     "url": ""
   },
   "main": "./dist/main/main.js",
